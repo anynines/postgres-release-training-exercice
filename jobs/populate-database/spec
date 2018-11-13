@@ -1,0 +1,19 @@
+---
+name: populate-database
+
+templates:
+  run.sh.erb: bin/run
+  script.sql.erb: scripts/script.sql
+
+consumes:
+- name: db
+  type: database
+
+packages: []
+
+properties:
+  populate-database.database:
+    description: "Database the script will be run against"
+  populate-database.script:
+    description: "Script than will be run against the postgres server via the psql client against the chose database"
+    example: "CREATE TABLE users;"

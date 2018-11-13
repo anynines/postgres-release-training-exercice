@@ -9,7 +9,7 @@ set +u
 source /var/vcap/packages/postgres-common/utils.sh
 set -u
 source /var/vcap/jobs/postgres/bin/pgconfig.sh
-source /var/vcap/jobs/postgres/bin/utils.sh
+source /var/vcap/jobs/postgres/bin/util.sh
 
 function upgrade(){
   if [ -d $DATA_DIR -a -f $POSTGRES_UPGRADE_LOCK ]; then

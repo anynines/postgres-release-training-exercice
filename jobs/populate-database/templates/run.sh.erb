@@ -1,0 +1,28 @@
+#!/bin/sh
+set -e
+<%
+    db_link = link("db")
+db = db_link.p("databases.databases").keep_if { |d| d["name"] == p("populate-database.database") }.first
+port = db_link.p("databases.port")
+user = db_link.p("databases.user")
+-%>
+
+<% unless db %>
+  echo "database not found"
+  exit 1
+<% end %>
+
+current_version="9.6.10"
+pgversion_current="postgres-${current_version}"
+
+JOB_DIR=/var/vcap/jobs/populate-database
+PACKAGE_DIR="/var/vcap/packages/${pgversion_current}"
+PSQL_PATH=${PACKAGE_DIR}/bin/psql
+
+export PGHOST=<%= db_link.instances.first.address %>
+export PGPORT=<%= port %>
+export PGPASSWORD=<%= user["password"] %>
+export PGUSER=<%= user["name"] %>
+export PGDATABASE=<%= p("populate-database.database") %>
+
+${PSQL_PATH} -f ${JOB_DIR}/scripts/script.sql

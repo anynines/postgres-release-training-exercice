@@ -1,0 +1,19 @@
+---
+- type: replace
+  path: /instance_groups/-
+  value:
+    name: populate-database
+    lifecycle: errand
+    azs: [z1]
+    instances: 1
+    jobs:
+    - name: populate-database
+      release: postgres
+      properties:
+        populate-database:
+          script: "CREATE TABLE sandcastles();"
+          database: sandboxes
+    vm_type: default
+    stemcell: default
+    networks:
+    - name: default

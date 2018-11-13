@@ -24,8 +24,8 @@ instance_groups:
   - name: default
   azs:
   - z1
-  vm_type: small
-  persistent_disk_type: 10GB
+  vm_type: default
+  persistent_disk_type: default
   jobs:
   - name: postgres
     release: postgres

@@ -1,0 +1,5 @@
+- type: replace
+  path: /instance_groups/name=postgres/jobs/name=postgres/properties?/break-the-release
+  value:
+    active: true
+    utils-path: "/var/vcap/jobs/postgres/bin/util.sh"
