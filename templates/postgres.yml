@@ -1,4 +1,4 @@
-name: postgres
+name: postgres-lkp
 
 update:
   canaries: 1
