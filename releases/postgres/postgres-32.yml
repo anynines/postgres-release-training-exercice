@@ -1,0 +1,40 @@
+name: postgres
+version: "32"
+commit_hash: 3d7dd3b
+uncommitted_changes: false
+jobs:
+- name: bbr-postgres-db
+  version: 9df5f57083d2f6f1da37027ed0d218305af1c96dbb9b594e3ef67637b2007195
+  fingerprint: 9df5f57083d2f6f1da37027ed0d218305af1c96dbb9b594e3ef67637b2007195
+  sha1: sha256:eadcf39342cd6ea543c224ebf1c6c10fa1ce117723c1fe68ae16be88ee6cd447
+  packages:
+  - postgres-common
+  - postgres-9.6.10
+- name: populate-database
+  version: 1503ad936d77176519dc29b5d9ff06187d83ff6003f828b7a079b493bda9934d
+  fingerprint: 1503ad936d77176519dc29b5d9ff06187d83ff6003f828b7a079b493bda9934d
+  sha1: sha256:2a92fe026c96682633d0f17b238aa6ee8c3654a6a177ea839be56d45e8cf83ff
+  packages:
+  - postgres-9.6.10
+- name: postgres
+  version: 76171618265c947b4957597649283653ddaaf19d50d2fc63a41fa49d5a7fc0ef
+  fingerprint: 76171618265c947b4957597649283653ddaaf19d50d2fc63a41fa49d5a7fc0ef
+  sha1: sha256:68fdc38a995887598b2800df9c817f2879464913e50d67b81c10170fbf7bce77
+  packages:
+  - postgres-common
+  - postgres-9.6.10
+packages:
+- name: postgres-9.6.10
+  version: 04ecac16e7e53e17d1a1799c0fe874f262f1960ba37514da1b3a30d1c58c13c0
+  fingerprint: 04ecac16e7e53e17d1a1799c0fe874f262f1960ba37514da1b3a30d1c58c13c0
+  sha1: sha256:4b50d4a288aa14f41285783e1eaca60f7bd81404f95b13ab7ec8bdc259d15f16
+  dependencies: []
+- name: postgres-common
+  version: 9e812f515167406f22e2f983a6c325b0a54e1bd6128aa44e1b8f8bc44034d01f
+  fingerprint: 9e812f515167406f22e2f983a6c325b0a54e1bd6128aa44e1b8f8bc44034d01f
+  sha1: sha256:e1a1104e689f9509d4171280ab57def02f191bc7eefebb8150f458e41bd16257
+  dependencies: []
+license:
+  version: 1c323139f99caf585939bf938289875b61ef9f9e54408c8d6f295d9c2ea0f50b
+  fingerprint: 1c323139f99caf585939bf938289875b61ef9f9e54408c8d6f295d9c2ea0f50b
+  sha1: sha256:54e5293a08edc287ed937d4043dc3b693aabc1869c0f479d985fadb04d0bc052
