@@ -3,8 +3,6 @@ set -o errexit
 set -o pipefail
 IFS=$'\n\t'
 
-set -x
-
 if [ -z "$2" ]; then
   echo "Not enough arguments supplied."
   echo "usage: ./test-the-release.sh deployment-name director-name"

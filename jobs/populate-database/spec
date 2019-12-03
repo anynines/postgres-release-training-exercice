@@ -10,7 +10,7 @@ consumes:
   type: database
 
 packages:
-- postgres-9.6.10
+- postgres-9.6.16
 
 properties:
   populate-database.database:
