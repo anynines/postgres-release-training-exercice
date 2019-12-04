@@ -27,7 +27,7 @@ if [[ -z $PGPASSWORD ]]; then
   exit 1
 fi
 
-results=$(psql -f ./scripts/test-the-release/find-tables.sql)
+results=$(psql -f ${BASH_SOURCE%/*}/scripts/test-the-release/find-tables.sql)
 
 if [[ "$results" == *"sandcastles"* ]]; then
   echo "Everything's fine! The table is there."
