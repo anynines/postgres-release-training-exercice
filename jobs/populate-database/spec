@@ -9,7 +9,8 @@ consumes:
 - name: db
   type: database
 
-packages: []
+packages:
+- postgres-9.6.16
 
 properties:
   populate-database.database:

@@ -4,7 +4,7 @@ set -e
     db_link = link("db")
 db = db_link.p("databases.databases").keep_if { |d| d["name"] == p("populate-database.database") }.first
 port = db_link.p("databases.port")
-user = db_link.p("databases.user")
+first_role = db_link.p("databases.roles").first
 -%>
 
 <% unless db %>
@@ -12,7 +12,7 @@ user = db_link.p("databases.user")
   exit 1
 <% end %>
 
-current_version="9.6.10"
+current_version="9.6.16"
 pgversion_current="postgres-${current_version}"
 
 JOB_DIR=/var/vcap/jobs/populate-database
@@ -21,8 +21,8 @@ PSQL_PATH=${PACKAGE_DIR}/bin/psql
 
 export PGHOST=<%= db_link.instances.first.address %>
 export PGPORT=<%= port %>
-export PGPASSWORD=<%= user["password"] %>
-export PGUSER=<%= user["name"] %>
+export PGPASSWORD=<%= first_role["password"] %>
+export PGUSER=<%= first_role["name"] %>
 export PGDATABASE=<%= p("populate-database.database") %>
 
 ${PSQL_PATH} -f ${JOB_DIR}/scripts/script.sql
