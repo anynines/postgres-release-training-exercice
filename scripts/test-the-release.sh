@@ -4,16 +4,12 @@ set -o errexit
 set -o pipefail
 IFS=$'\n\t'
 
-if [ -z "$2" ]; then
-  echo "Not enough arguments supplied."
-  echo "usage: ./test-the-release.sh deployment-name director-name"
-  exit 1
-fi
+export deployment_name="${1:-$BOSH_DEPLOYMENT}"
+export director_name="${2:-$BOSH_DIRECTOR}"
+
+echo "Running with deployment '${deployment_name}' and director '${director_name}'."
 
 set -o nounset
-
-export deployment_name=$1
-export director_name=$2
 
 export PGHOST="$(bosh vms -d ${deployment_name} --json | jq -r '.Tables[].Rows[] | select(.instance | contains("postgres")) | .ips')"
 export PGPORT=5524
@@ -27,7 +23,7 @@ if [[ -z $PGPASSWORD ]]; then
   exit 1
 fi
 
-results=$(psql -f ${BASH_SOURCE%/*}/scripts/test-the-release/find-tables.sql)
+results=$(psql -f ${BASH_SOURCE%/*}/test-the-release/find-tables.sql)
 
 if [[ "$results" == *"sandcastles"* ]]; then
   echo "Everything's fine! The table is there."
