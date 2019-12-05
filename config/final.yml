@@ -1,7 +1,9 @@
 ---
+final_name: postgres-release-training-exercice
 blobstore:
-  provider: local
+  provider: s3
   options:
-    blobstore_path: /tmp/postgres-blobs
-final_name: postgres
+    bucket_name: a9s-blobs
+    endpoint: https://s3-eu-west-1.amazonaws.com
+    region: eu-west-1
 
