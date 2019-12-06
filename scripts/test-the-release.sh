@@ -21,7 +21,7 @@ export PGUSER="pgadmin"
 export PGDATABASE="sandboxes"
 
 if [[ -z $PGPASSWORD ]]; then
-  echo "No password found in CredHub! Is your deployment generating a value for 'pgadmin_dadabase_password'?"
+  echo "No password found in CredHub! Is your deployment generating a value for 'pgadmin_database_password'?"
   echo "Try to deployment with the templates/operations/set-properties.yml ops file."
   exit 1
 fi
