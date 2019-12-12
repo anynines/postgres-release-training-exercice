@@ -10,7 +10,7 @@ export PGPASSWORD=${PGPASSWORD}
 export PGUSER="pgadmin"
 export PGDATABASE="sandboxes"
 
-results=$(psql -f ./scripts/test-the-release/find-tables.sql)
+results=$(psql -f $( dirname "${BASH_SOURCE[0]}" )/test-the-release/find-tables.sql)
 
 if [[ "$results" == *"sandcastles"* ]]; then
   echo "Everything's fine! The table is there."
